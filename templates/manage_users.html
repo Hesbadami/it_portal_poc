@@ -1,0 +1,45 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% include "sidebar.html" %}
+
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+        <a class="btn btn-primary float-right" href="add_user/">New user</a>
+          <div class="row mb-2">
+              <h1 class="m-0 text-dark">Users</h1>
+            
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+  {% include "messages.html" %}
+      <!-- /.content-header -->
+      <!-- Main content -->
+        <div class="card">
+              <div class="card-body">
+                <table id="show_forms" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>First and last name</th>                 
+                    <th>Username</th>                 
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for user in users %}
+                      <tr>
+                        <td>{{user.full_name}}</td>
+                        <td>{{user.username}}</td>
+                        <td><a href="/manage/user/{{user.user_id}}"><i class="fa fa-edit nav-icon"></i></a></td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+      <!-- /.content -->
+
+{% include "footer.html" %}

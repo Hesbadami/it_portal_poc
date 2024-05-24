@@ -1,0 +1,11 @@
+{{ data }}
+{% if error %}
+<div class="alert alert-danger alert-dismissible">
+	{{ error }}
+</div>
+{% endif %}
+{% if success %}
+<div class="alert alert-success alert-dismissible">
+	{{ success }}
+</div>
+{% endif %}

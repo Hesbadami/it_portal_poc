@@ -1,0 +1,77 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% include "sidebar.html" %}
+
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+		<div class="container-fluid">
+{% include "messages.html" %}
+        <div class="row mb-2">
+            <h1 class="col sm-6 text-dark">Create Company</h1>
+        </div><!-- /.row -->
+			<form role="form" action="" method="post">
+			{% csrf_token %}
+			<div class="col-md-12">
+				<div class="card card-primary">
+					<div class="card-body">
+						<div class="form-group row">
+							<label for="name" class="col-sm-2">Name</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="name" name="name" value="{{ company.name }}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="industry" class="col-sm-2">Industry</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="industry" name="industry" value="{{ company.industry }}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="employee_count" class="col-sm-2">Employee count</label>
+							<div class="col-sm-8">
+								<input type="number" class="form-control" id="employee_count" name="employee_count" value="{{ company.employee_count }}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="primary_contact_name" class="col-sm-2">Primary contact name</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="primary_contact_name" name="primary_contact_name" value="{{ company.primary_contact_name }}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="primary_contact_email" class="col-sm-2">Primary contact email</label>
+							<div class="col-sm-8">
+								<input type="email" class="form-control" id="primary_contact_email" name="primary_contact_email" value="{{ company.primary_contact_email }}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="secondary_contact_name" class="col-sm-2">Secondary contact name</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="secondary_contact_name" name="secondary_contact_name" value="{{ company.secondary_contact_name }}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="secondary_contact_email" class="col-sm-2">Secondary contact email</label>
+							<div class="col-sm-8">
+								<input type="email" class="form-control" id="secondary_contact_email" name="secondary_contact_email" value="{{ company.secondary_contact_email }}">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+			<hr />
+				<div class="card card-primary">
+					<div class="card-body">
+					
+						<div class="card-footer">
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+				</div>
+				</form>
+			</div>
+    <!-- /.content -->
+
+{% include "footer.html" %}

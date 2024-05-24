@@ -1,0 +1,109 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% include "sidebar.html" %}
+
+
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          {% include "messages.html" %}
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Edit Chat</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Edit Chat</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">General</h3>
+
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="chatname">Chat Name</label>
+                  <input type="text" id="chatname" name="chatname" class="form-control" value="{{ chat.name }}">
+                </div>
+                <div class="form-group">
+                  <label for="description">Chat Description</label>
+                  <textarea id="description" name="description" class="form-control" rows="4">{{ chat.description }}</textarea>
+                </div>
+                <div class="form-group">
+                  <label for="is_active">Status</label>
+                  <select id="is_active" name="is_active" class="form-control custom-select">
+                    <option disabled>Select one</option>
+                    <option {% if not chat.is_active %}selected{% endif %}>Disabled</option>
+                    <option {% if chat.is_active %}selected{% endif %}>Active</option>
+                  </select>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">GPT Settings</h3>
+
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="system_prompt">System Prompt</label>
+                  <textarea id="system_prompt" name="system_prompt" class="form-control" rows="4">{{ chat.system_prompt }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="presence_penalty">
+                        Presence Penalty ({{ chat.presence_penalty }})
+                    </label>
+                    <input type="range" class="custom-range" min="-2.0" max="2.0" step="0.1" id="presence_penalty" name="presence_penalty" value="{{ chat.presence_penalty }}">
+                </div>
+                <div class="form-group">
+                    <label for="top_p">Top P ({{ chat.top_p }})</label>
+                    <input type="range" class="custom-range custom-range-danger" id="top_p" min="0" max="1" step="0.1" name="top_p" value="{{ chat.top_p }}">
+                </div>
+                <div class="form-group">
+                    <label for="max_tokens">Max Tokens</label>
+                    <input type="number" id="max_tokens" name="max_tokens" class="form-control" value="{{ chat.max_tokens }}">
+                </div>
+              </div>
+              <script>
+                $('#presence_penalty').on('change input', function() {
+                    var $this = $(this);
+                    $this.siblings('label').html('Presence Penalty (' + $this.val() + ')');
+                });
+                $('#top_p').on('change input', function() {
+                    var $this = $(this);
+                    $this.siblings('label').html('Top P (' + $this.val() + ')');
+                });
+              </script>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <a href="#" class="btn btn-secondary">Cancel</a>
+            <input type="submit" value="Save Changes" class="btn btn-success float-right">
+          </div>
+        </div>
+      </form>
+      </section>
+      <!-- /.content -->
+
+{% include "footer.html" %}

@@ -1,0 +1,45 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% include "sidebar.html" %}
+
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+        <a class="btn btn-primary float-right" href="add_company/">New company</a>
+          <div class="row mb-2">
+              <h1 class="m-0 text-dark">Companies</h1>
+            
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+  {% include "messages.html" %}
+      <!-- /.content-header -->
+      <!-- Main content -->
+        <div class="card">
+              <div class="card-body">
+                <table id="show_forms" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Name</th>                 
+                    <th>Employee count</th>                 
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for company in companies %}
+                      <tr>
+                        <td>{{company.name}}</td>
+                        <td>{{company.employee_count}}</td>
+                        <td><a href="/manage/company/{{company.pk}}"><i class="fa fa-edit nav-icon"></i></a></td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+      <!-- /.content -->
+
+{% include "footer.html" %}

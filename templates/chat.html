@@ -1,0 +1,101 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% include "sidebar.html" %}
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="container-fluid">
+            {% include "messages.html" %}
+            <a class="btn btn-primary float-right" href="/mychats/edit/{{ chat.pk }}">Edit chat</a>
+                  </div><!-- /.container-fluid -->
+
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>{{chat.name}}</h1>
+              {{ chat.description }}
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+  
+          <!-- Timelime example  -->
+          <div class="row">
+            <div class="col-md-12">
+
+
+
+
+
+              <!-- The time line -->
+              <div class="timeline">
+                <div>
+                  <i class="fas fa-robot bg-blue"></i>
+                  <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="text-primary font-weight-bold">{{request.META.current_user.full_name}}</span>
+                    </div>
+  
+                    <div class="timeline-body">
+
+                        <form class="form-horizontal" role="form" action="" method="post">
+                          {% csrf_token %}
+                          <div >
+                        <textarea class="form-control" id="message_content", name="message_content" rows="3" placeholder="Enter a question ..."></textarea>
+                          </div>
+                          <!-- /.card-body -->
+                          <div class="card-footer bg-white">
+                            <button type="submit" class="btn btn-primary">Send message</button>
+                          </div>
+                          <!-- /.card-footer -->
+                        </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- END timeline item -->
+                {% for message in messages %}
+                <!-- timeline item -->
+                <div>
+                  {% if message.role == 'assistant' %}
+                  <i class="fas fa-user bg-green"></i>
+                  {% else %}
+                  <i class="fas fa-robot bg-blue"></i>
+                  {% endif %}
+                  <div class="timeline-item">
+                    <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
+                    {% if message.role == 'assistant' %}
+                    <h3 class="timeline-header text-primary font-weight-bold">Assistant</h3>
+                    {% else %}
+                    <div class="timeline-header">
+                        <span class="text-primary font-weight-bold">{{request.META.current_user.full_name}}</span>
+                    </div>
+                    {% endif %}
+  
+                    <div class="timeline-body">
+                      {{ message.content }}
+                      <a class="btn btn-sm text-secondary" data-toggle="dropdown" ><i class="fas fa-pen"></i></a>
+                      <ul class="dropdown-menu" style="">
+                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                        <li><a class="dropdown-item" href="#">Insert Above</a></li>
+                        <li><a class="dropdown-item" href="#">Insert Below</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!-- END timeline item -->
+                {% endfor %}
+              </div>
+            </div>
+            <!-- /.col -->
+          </div>
+        </div>
+        <!-- /.timeline -->
+  
+      </section>
+
+{% include "footer.html" %}

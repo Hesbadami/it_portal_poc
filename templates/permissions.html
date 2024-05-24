@@ -1,0 +1,103 @@
+
+<div class="row">
+    <div class="col-md-8">
+
+<h5>Access</h5>
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="col-md-12">
+                
+                    <table class="table">
+                        <tr>
+                            <th>Form</th>
+                            <th>View</th>
+                            <th>Add</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tr>
+                            <th>Chats</th>
+                            <td><input type="checkbox" class="" id="permission[mychats/view/[0-9]]" name="permission[]"{% if 'permission[mychats/view/[0-9]]' in user_permissions %} checked{% endif %} value="permission[mychats/view/[0-9]]"></td>
+
+                            <td><input type="checkbox" class="" id="permission[mychats/add$]" name="permission[]"{% if 'permission[mychats/add$]' in user_permissions %} checked{% endif %} value="permission[mychats/add$]"></td>
+
+                            <td><input type="checkbox" class="" id="permission[mychats/edit/[0-9]]" name="permission[]"{% if 'permission[mychats/edit/[0-9]]' in user_permissions %} checked{% endif %} value="permission[mychats/edit/[0-9]]"></td>
+
+                            <td><input type="checkbox" class="" id="permission[mychats/delete/[0-9]]" name="permission[]"{% if 'permission[mychats/delete/[0-9]]' in user_permissions %} checked{% endif %} value="permission[mychats/delete/[0-9]]"></td>
+                            
+                        </tr>
+                        <tr>
+                            <th>Companies</th>
+                            <td><input type="checkbox" class="" id="permission[manage/companies$]" name="permission[]"{% if 'manage/companies$' in user_permissions %} checked{% endif %} value="manage/companies$"></td>
+
+                            <td><input type="checkbox" class="" id="permission[manage/companies/add_company$]" name="permission[]"{% if 'permission[manage/companies/add_company$]' in user_permissions %} checked{% endif %} value="permission[manage/companies/add_company$]"></td>
+
+                            <td><input type="checkbox" class="" id="permission[manage/company/[0-9]]" name="permission[]"{% if 'permission[manage/company/[0-9]]' in user_permissions %} checked{% endif %} value="permission[manage/company/[0-9]]"></td>
+
+                            <td><input type="checkbox" class="" id="permission[manage/delete_company/[0-9]]" name="permission[]"{% if 'permission[manage/delete_company/[0-9]]' in user_permissions %} checked{% endif %} value="permission[manage/delete_company/[0-9]]"></td>
+                        </tr>
+                        <tr>
+                            <th>Users</th>
+                            <td><input type="checkbox" class="" id="permission[manage/users$]" name="permission[]"{% if 'manage/users$' in user_permissions %} checked{% endif %} value="manage/users$"></td>
+
+                            <td><input type="checkbox" class="" id="permission[manage/users/add_company$]" name="permission[]"{% if 'permission[manage/users/add_company$]' in user_permissions %} checked{% endif %} value="permission[manage/users/add_company$]"></td>
+
+                            <td><input type="checkbox" class="" id="permission[manage/user/[0-9]]" name="permission[]"{% if 'permission[manage/user/[0-9]]' in user_permissions %} checked{% endif %} value="permission[manage/user/[0-9]]"></td>
+
+                            <td><input type="checkbox" class="" id="permission[manage/delete_user/[0-9]]" name="permission[]"{% if 'permission[manage/delete_user/[0-9]]' in user_permissions %} checked{% endif %} value="permission[manage/delete_user/[0-9]]"></td>
+                        </tr>
+                        <tr>
+                            <th>Users access</th>
+                            <td><input type="checkbox" class="" id="permission[view_access]" name="permission[]"{% if 'view_access' in user_permissions %} checked{% endif %} value="view_access"></td>
+                            <td><input type="checkbox" class="" id="permission[edit_access]" name="permission[]"{% if 'permission[edit_access]' in user_permissions %} checked{% endif %} value="permission[edit_access]"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+
+<h5>GPT</h5>
+        <div class="card card-primary">
+            <div class="card-body">					
+                <div class="col-md-12">
+                    <table class="table">
+                        <tr>
+                            <th>Restriction</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <th>Tokens</th>
+                            <td>
+                                <input type="number" id="max_tokens" name="max_tokens" class="form-control" placeholder="Maximum (per month)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Cost</th>
+                            <td>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        <i class="fas fa-dollar-sign"></i>
+                                      </span>
+                                    </div>
+                                    <input type="text" id="max_cost" name="max_cost" class="form-control" placeholder="Maximum (per month)">
+                                  </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Active chats</th>
+                            <td>
+                                
+                                <input type="number" id="max_chats" name="max_chats" class="form-control" placeholder="Maximum">
+
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
